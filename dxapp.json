@@ -1,0 +1,87 @@
+{
+  "name": "gild_v1",
+  "title": "GDS Into LD",
+  "summary": "This app finds the LD between a snp and its regional neighbors from a GDS file using PLINK.",
+  "tags": [
+    "Statistics "
+  ],
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "name": "gds_file",
+      "label": "GDS genotype file",
+      "class": "file",
+      "optional": false
+    },
+    {
+      "name": "lead_snp",
+      "label": "Variant ID (CHR:POS) of lead SNP",
+      "class": "string",
+      "optional": false
+    },
+    {
+      "name": "start_pos",
+      "label": "Starting BP position",
+      "class": "int",
+      "optional": false
+    },
+    {
+      "name": "stop_pos",
+      "label": "Ending BP position",
+      "class": "int",
+      "optional": false
+    },
+    {
+      "name": "results_files",
+      "label": "Label for resulting files",
+      "class": "string",
+      "optional": true,
+      "default": "ld_results"
+    },
+    {
+      "name": "ld_window_kb",
+      "label": "Value for PLINK option 'ld-window-kb'",
+      "class": "int",
+      "optional": true,
+      "default": 1000
+    },
+    {
+      "name": "ld_window",
+      "label": "Value for PLINK option 'ld-window'",
+      "class": "int",
+      "optional": true,
+      "default": 99999
+    },
+    {
+      "name": "ld_window_r2",
+      "label": "Value for PLINK option 'ld-window-r2'",
+      "class": "float",
+      "optional": true,
+      "default": 0
+    }
+  ],
+  "outputSpec": [
+    {
+      "name": "ld_results",
+      "class": "array:file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {
+        "name": "libxml2-dev"
+      }
+    ],
+    "file": "src/code.sh",
+    "release": "14.04",
+    "interpreter": "bash",
+    "distribution": "Ubuntu"
+  },
+  "access": {
+    "project": "CONTRIBUTE",
+    "allProjects": "CONTRIBUTE",
+    "network": [
+      "*"
+    ]
+  }
+}
